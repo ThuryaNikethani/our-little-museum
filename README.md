@@ -22,16 +22,6 @@ No accounts, no servers — everything stays private on your device.
 - **Add / Edit / Delete** — full control over every memory
 - **Keyboard shortcuts** — press `Esc` to close any open panel
 
----
-
-## Getting started
-
-1. Clone or download this repository
-2. Open the folder in VS Code
-3. Open `index.html` with the **Live Server** extension (or any local server)
-4. Click "Open the doors" and start adding your memories
-
-No build step, no dependencies, no install required.
 
 ---
 
@@ -53,14 +43,6 @@ Everything lives in your browser's local storage. No data is sent anywhere. No b
 
 ---
 
-## Publishing to GitHub Pages
-
-1. Push this repo to GitHub
-2. Go to **Settings → Pages**
-3. Set source to **main branch / root**
-4. Your museum will be live at `https://yourusername.github.io/repository-name`
-
----
 
 ## Project structure
 
@@ -77,4 +59,4 @@ our-little-museum/
 
 ---
 
-Made with care, for the two of you.
+Made with care, for the two of you ❤️.
