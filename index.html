@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Little Museum</title>
+  <meta name="description" content="A private gallery for the two of you — every moment, saved forever." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20260301" />
+</head>
+<body>
+
+  <!-- ── SPLASH ── -->
+  <div id="splash" class="splash">
+    <div class="romance-watermark romance-watermark--splash" aria-hidden="true">
+      <span>♡</span><span>✦</span><span>❀</span><span>♡</span>
+    </div>
+    <div class="splash-inner">
+      <div class="splash-symbol">◈</div>
+      <h1 class="splash-title">Our Little Museum</h1>
+      <p class="splash-sub">A private gallery for the two of you</p>
+      <section class="home-description home-description--splash" id="homeDescription">
+        <h2 class="home-description-title">A romantic space to preserve your favorite moments together.</h2>
+        <p class="home-description-text">
+          Save photos, stories, and feelings in one elegant timeline. Use the filters to find memories by mood,
+          open spotlight cards to revisit special days, and keep building your little museum over time.
+        </p>
+      </section>
+      <button class="btn-enter" id="enterBtn">Open the doors</button>
+    </div>
+    <div class="splash-bg"></div>
+  </div>
+
+  <!-- ── APP ── -->
+  <div id="app" class="app hidden">
+    <div class="romance-watermark romance-watermark--app" aria-hidden="true">
+      <span>♡</span><span>✧</span><span>❀</span><span>♡</span><span>✦</span>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-left">
+        <span class="logo-symbol">◈</span>
+        <span class="logo-text">Our Little Museum</span>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-btn active" data-view="gallery">Gallery</button>
+        <button class="nav-btn" data-view="timeline">Timeline</button>
+        <button class="nav-btn" data-view="emotions">By Feeling</button>
+      </nav>
+      <button class="btn-add" id="addMemoryBtn">+ Add Memory</button>
+    </header>
+
+    <!-- MAIN AREA -->
+    <main class="main-content">
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar">
+        <div class="filter-moods" id="moodFilter">
+          <span class="mood-pill active" data-mood="all">All</span>
+          <span class="mood-pill" data-mood="joy">✦ Joy</span>
+          <span class="mood-pill" data-mood="love">♡ Love</span>
+          <span class="mood-pill" data-mood="adventure">◉ Adventure</span>
+          <span class="mood-pill" data-mood="cozy">❋ Cozy</span>
+          <span class="mood-pill" data-mood="silly">☻ Silly</span>
+          <span class="mood-pill" data-mood="tender">◌ Tender</span>
+          <span class="mood-pill" data-mood="milestone">★ Milestone</span>
+        </div>
+        <div class="filter-search">
+          <input type="text" id="searchInput" placeholder="Search stories…" />
+        </div>
+      </div>
+
+      <!-- DASHBOARD / INSIGHTS -->
+      <section class="insights-panel" id="insightsPanel">
+        <div class="insights-stats">
+          <article class="stat-card">
+            <p class="stat-label">Total Memories</p>
+            <p class="stat-value" id="statTotal">0</p>
+            <p class="stat-sub" id="statTotalSub">Your collection size</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">This Month</p>
+            <p class="stat-value" id="statMonth">0</p>
+            <p class="stat-sub" id="statMonthSub">Memories added this month</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Feelings Tracked</p>
+            <p class="stat-value" id="statMoods">0</p>
+            <p class="stat-sub" id="statMoodsSub">Unique moods in your gallery</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">With Photos</p>
+            <p class="stat-value" id="statPhotos">0%</p>
+            <p class="stat-sub" id="statPhotosSub">Visual memories ratio</p>
+          </article>
+        </div>
+
+        <div class="insights-extras">
+          <article class="spotlight-card" id="spotlightCard">
+            <p class="spotlight-label">Spotlight Memory</p>
+            <h3 class="spotlight-title" id="spotlightTitle">No memory yet</h3>
+            <p class="spotlight-meta" id="spotlightMeta">Add one to get started</p>
+            <p class="spotlight-story" id="spotlightStory">Your most recent memory will appear here with quick access.</p>
+            <button class="btn-secondary" id="spotlightOpen" type="button" disabled>Open Spotlight</button>
+          </article>
+
+          <article class="quick-actions-card">
+            <p class="quick-actions-label">Quick Actions</p>
+            <button class="quick-action-btn" id="quickAddBtn" type="button">+ Add New Memory</button>
+            <button class="quick-action-btn" id="quickSurpriseBtn" type="button">✦ Surprise Me</button>
+            <button class="quick-action-btn" id="quickDemoBtn" type="button">◈ Load Demo Memories</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALLERY VIEW -->
+      <section class="view active" id="view-gallery">
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- cards rendered by JS -->
+        </div>
+        <div class="empty-state hidden" id="emptyState">
+          <p class="empty-symbol">◈</p>
+          <p class="empty-title">Your museum awaits its first piece</p>
+          <p class="empty-sub">Add a memory and let the collection begin.</p>
+          <div class="empty-actions">
+            <button class="btn-primary" id="emptyAddBtn" type="button">Add First Memory</button>
+            <button class="btn-secondary" id="emptyDemoBtn" type="button">Load Demo</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE VIEW -->
+      <section class="view" id="view-timeline">
+        <div class="timeline" id="timelineContainer"></div>
+      </section>
+
+      <!-- EMOTIONS VIEW -->
+      <section class="view" id="view-emotions">
+        <div class="emotions-grid" id="emotionsGrid"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ── MODAL: Add/Edit Memory ── -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal" id="memoryModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h2 class="modal-title" id="modalTitle">Add a Memory</h2>
+
+      <form id="memoryForm" novalidate>
+        <input type="hidden" id="editId" />
+
+        <div class="form-group">
+          <label>Photo</label>
+          <div class="upload-area" id="uploadArea">
+            <input type="file" id="photoInput" accept="image/*" hidden />
+            <div class="upload-placeholder" id="uploadPlaceholder">
+              <span class="upload-icon">⊕</span>
+              <span>Click or drag a photo here</span>
+            </div>
+            <img class="upload-preview hidden" id="uploadPreview" alt="preview" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="titleInput">Title</label>
+            <input type="text" id="titleInput" placeholder="Our first date…" required />
+          </div>
+          <div class="form-group">
+            <label for="dateInput">Date</label>
+            <input type="date" id="dateInput" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="moodInput">Feeling</label>
+          <div class="mood-select" id="moodSelect">
+            <div class="mood-option" data-mood="joy">✦ Joy</div>
+            <div class="mood-option" data-mood="love">♡ Love</div>
+            <div class="mood-option" data-mood="adventure">◉ Adventure</div>
+            <div class="mood-option" data-mood="cozy">❋ Cozy</div>
+            <div class="mood-option" data-mood="silly">☻ Silly</div>
+            <div class="mood-option" data-mood="tender">◌ Tender</div>
+            <div class="mood-option" data-mood="milestone">★ Milestone</div>
+          </div>
+          <input type="hidden" id="moodInput" required />
+        </div>
+
+        <div class="form-group">
+          <label for="storyInput">Story</label>
+          <textarea id="storyInput" rows="4" placeholder="What made this moment special…"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="tagsInput">Tags <span class="label-note">(comma separated)</span></label>
+          <input type="text" id="tagsInput" placeholder="beach, sunset, first time…" />
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn-primary" id="saveBtn">Save Memory</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MODAL: Lightbox ── -->
+  <div class="lightbox-overlay hidden" id="lightboxOverlay">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" alt="" />
+      </div>
+      <div class="lightbox-info">
+        <div class="lightbox-mood" id="lightboxMood"></div>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-date" id="lightboxDate"></p>
+        <p class="lightbox-story" id="lightboxStory"></p>
+        <div class="lightbox-tags" id="lightboxTags"></div>
+        <div class="lightbox-actions">
+          <button class="btn-secondary" id="lightboxEdit">Edit</button>
+          <button class="btn-danger" id="lightboxDelete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js?v=20260301"></script>
+</body>
+</html>
